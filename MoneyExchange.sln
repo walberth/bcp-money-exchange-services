@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Infrastructure", "0.Infrastructure", "{386D402B-EE13-4B8A-B5DF-318F52C80846}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyExchange.Infrastructure.Configuration", "MoneyExchange.Infrastructure.Configuration\MoneyExchange.Infrastructure.Configuration.csproj", "{329EE828-B40F-43F2-96CA-40F08CC9D4F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyExchange.Infrastructure.Entity", "MoneyExchange.Infrastructure.Entity\MoneyExchange.Infrastructure.Entity.csproj", "{E770CB7B-E5DB-403C-9E68-60BA1DF69F57}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyExchange.Infrastructure.Interfaces", "MoneyExchange.Infrastructure.Interfaces\MoneyExchange.Infrastructure.Interfaces.csproj", "{FCEEEFEE-2F14-4219-B641-8E92E5B8654A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyExchange.Infrastructure.Repository", "MoneyExchange.Infrastructure.Repository\MoneyExchange.Infrastructure.Repository.csproj", "{1B428969-700E-41F9-A0DD-EB20CABC28B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Application", "1.Application", "{4F024508-4C36-40E7-913D-E81CB5827D03}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyExchange.Application.Main", "MoneyExchange.Application.Main\MoneyExchange.Application.Main.csproj", "{DF53A34A-6FB5-4BE0-9C81-EB3FF9ADC221}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyExchange.Application.Interfaces", "MoneyExchange.Application.Interfaces\MoneyExchange.Application.Interfaces.csproj", "{CF41510E-E9DF-4A87-BEBC-4291E1359929}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyExchange.Application.DTO", "MoneyExchange.Application.DTO\MoneyExchange.Application.DTO.csproj", "{BAFF9DAF-1B2C-4467-A5BC-C9A55FA45A34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Service", "2.Service", "{55AD2644-EFB4-46E4-AADE-0479E65CF269}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyExchange.Service.Api", "MoneyExchange.Services.Api\MoneyExchange.Service.Api.csproj", "{CCC9A01D-23AE-4062-B363-6322D9F88718}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Transversal", "3.Transversal", "{3FD64A5F-6F44-48D0-850F-9DA82152D717}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyExchange.Transversal.Common", "MoneyExchange.Transversal.Common\MoneyExchange.Transversal.Common.csproj", "{106973B8-5309-43AF-A07C-59F85B369876}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{329EE828-B40F-43F2-96CA-40F08CC9D4F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{329EE828-B40F-43F2-96CA-40F08CC9D4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{329EE828-B40F-43F2-96CA-40F08CC9D4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{329EE828-B40F-43F2-96CA-40F08CC9D4F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E770CB7B-E5DB-403C-9E68-60BA1DF69F57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E770CB7B-E5DB-403C-9E68-60BA1DF69F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E770CB7B-E5DB-403C-9E68-60BA1DF69F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E770CB7B-E5DB-403C-9E68-60BA1DF69F57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCEEEFEE-2F14-4219-B641-8E92E5B8654A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCEEEFEE-2F14-4219-B641-8E92E5B8654A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCEEEFEE-2F14-4219-B641-8E92E5B8654A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCEEEFEE-2F14-4219-B641-8E92E5B8654A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B428969-700E-41F9-A0DD-EB20CABC28B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B428969-700E-41F9-A0DD-EB20CABC28B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B428969-700E-41F9-A0DD-EB20CABC28B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B428969-700E-41F9-A0DD-EB20CABC28B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF53A34A-6FB5-4BE0-9C81-EB3FF9ADC221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF53A34A-6FB5-4BE0-9C81-EB3FF9ADC221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF53A34A-6FB5-4BE0-9C81-EB3FF9ADC221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF53A34A-6FB5-4BE0-9C81-EB3FF9ADC221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF41510E-E9DF-4A87-BEBC-4291E1359929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF41510E-E9DF-4A87-BEBC-4291E1359929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF41510E-E9DF-4A87-BEBC-4291E1359929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF41510E-E9DF-4A87-BEBC-4291E1359929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAFF9DAF-1B2C-4467-A5BC-C9A55FA45A34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAFF9DAF-1B2C-4467-A5BC-C9A55FA45A34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAFF9DAF-1B2C-4467-A5BC-C9A55FA45A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAFF9DAF-1B2C-4467-A5BC-C9A55FA45A34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC9A01D-23AE-4062-B363-6322D9F88718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC9A01D-23AE-4062-B363-6322D9F88718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC9A01D-23AE-4062-B363-6322D9F88718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC9A01D-23AE-4062-B363-6322D9F88718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{106973B8-5309-43AF-A07C-59F85B369876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{106973B8-5309-43AF-A07C-59F85B369876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{106973B8-5309-43AF-A07C-59F85B369876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{106973B8-5309-43AF-A07C-59F85B369876}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{329EE828-B40F-43F2-96CA-40F08CC9D4F6} = {386D402B-EE13-4B8A-B5DF-318F52C80846}
+		{E770CB7B-E5DB-403C-9E68-60BA1DF69F57} = {386D402B-EE13-4B8A-B5DF-318F52C80846}
+		{FCEEEFEE-2F14-4219-B641-8E92E5B8654A} = {386D402B-EE13-4B8A-B5DF-318F52C80846}
+		{1B428969-700E-41F9-A0DD-EB20CABC28B2} = {386D402B-EE13-4B8A-B5DF-318F52C80846}
+		{DF53A34A-6FB5-4BE0-9C81-EB3FF9ADC221} = {4F024508-4C36-40E7-913D-E81CB5827D03}
+		{CF41510E-E9DF-4A87-BEBC-4291E1359929} = {4F024508-4C36-40E7-913D-E81CB5827D03}
+		{BAFF9DAF-1B2C-4467-A5BC-C9A55FA45A34} = {4F024508-4C36-40E7-913D-E81CB5827D03}
+		{CCC9A01D-23AE-4062-B363-6322D9F88718} = {55AD2644-EFB4-46E4-AADE-0479E65CF269}
+		{106973B8-5309-43AF-A07C-59F85B369876} = {3FD64A5F-6F44-48D0-850F-9DA82152D717}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD9B694D-E7DF-46DD-9FD8-C656788D8357}
+	EndGlobalSection
+EndGlobal
