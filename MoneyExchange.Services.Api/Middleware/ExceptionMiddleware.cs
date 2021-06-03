@@ -3,11 +3,10 @@
     using System;
     //using Sentry;
     using System.Net;
+    using System.Diagnostics;
     using Transversal.Common;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
-    using System.Collections.Generic;
-    using Microsoft.Extensions.Primitives;
 
     public class ExceptionMiddleware
     {
@@ -55,6 +54,8 @@
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.OK;
+
+            Debug.WriteLine(exception.Message);
 
             var response = new Response<string>
             {
