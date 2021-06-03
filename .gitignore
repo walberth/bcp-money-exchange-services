@@ -401,3 +401,4 @@ target/
 /.nb-gradle/
 build/
 
+*.db
