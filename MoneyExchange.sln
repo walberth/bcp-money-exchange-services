@@ -29,9 +29,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Transversal", "3.Transver
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyExchange.Transversal.Common", "MoneyExchange.Transversal.Common\MoneyExchange.Transversal.Common.csproj", "{106973B8-5309-43AF-A07C-59F85B369876}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyExchange.Transversal.Mapper", "MoneyExchange.Transversal.Mapper\MoneyExchange.Transversal.Mapper.csproj", "{78F8D12F-8D0F-4C18-8D35-DB43DC9C016A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyExchange.Transversal.Mapper", "MoneyExchange.Transversal.Mapper\MoneyExchange.Transversal.Mapper.csproj", "{78F8D12F-8D0F-4C18-8D35-DB43DC9C016A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyExchange.Transversal.Validator", "MoneyExchange.Transversal.Validator\MoneyExchange.Transversal.Validator.csproj", "{59ED7930-72C9-473B-A00A-9816BCD465B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyExchange.Transversal.Validator", "MoneyExchange.Transversal.Validator\MoneyExchange.Transversal.Validator.csproj", "{59ED7930-72C9-473B-A00A-9816BCD465B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Testing", "4.Testing", "{6873CF24-1320-4E96-B03B-D8662893FC12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyExchange.Testing.Application", "MoneyExchange.Testing.Application\MoneyExchange.Testing.Application.csproj", "{AF71F745-AC6F-48E1-B4F3-4AB686951DC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +87,10 @@ Global
 		{59ED7930-72C9-473B-A00A-9816BCD465B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59ED7930-72C9-473B-A00A-9816BCD465B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59ED7930-72C9-473B-A00A-9816BCD465B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF71F745-AC6F-48E1-B4F3-4AB686951DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF71F745-AC6F-48E1-B4F3-4AB686951DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF71F745-AC6F-48E1-B4F3-4AB686951DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF71F745-AC6F-48E1-B4F3-4AB686951DC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +107,7 @@ Global
 		{106973B8-5309-43AF-A07C-59F85B369876} = {3FD64A5F-6F44-48D0-850F-9DA82152D717}
 		{78F8D12F-8D0F-4C18-8D35-DB43DC9C016A} = {3FD64A5F-6F44-48D0-850F-9DA82152D717}
 		{59ED7930-72C9-473B-A00A-9816BCD465B8} = {3FD64A5F-6F44-48D0-850F-9DA82152D717}
+		{AF71F745-AC6F-48E1-B4F3-4AB686951DC1} = {6873CF24-1320-4E96-B03B-D8662893FC12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD9B694D-E7DF-46DD-9FD8-C656788D8357}
