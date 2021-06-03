@@ -2,12 +2,15 @@
 {
     using DTO;
     using Transversal.Common;
+    using System.Threading.Tasks;
     using System.Collections.Generic;
 
     public interface IExchangeApplication
     {
-        Response<IEnumerable<ExchangeTypeDto>> GetExchangeTypes(); 
-        Response<ReturnExchangeDto> RealizeMoneyExchange(ReceiveExchangeDto receiveExchange);
+        Task<Response<IEnumerable<ExchangeTypeDto>>> GetExchangeTypes(); 
+        Response<ReturnExchangeDto> PerformMoneyExchange(ReceiveExchangeDto receiveExchange);
         Response<object> ChangeMoneyExchangeType(ExchangeTypeDto exchangeType);
+        Response<object> RegisterMoneyExchangeType(ExchangeTypeDto exchangeType);
+        Response<object> DeleteMoneyExchangeType(string originCurrency, string destinationCurrency);
     }
 }

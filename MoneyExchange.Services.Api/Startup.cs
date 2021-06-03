@@ -67,18 +67,13 @@ namespace MoneyExchange
             services.AddEntityFrameworkSqlite()
                 .AddDbContext<MoneyExchangeContext>(x => x.UseLoggerFactory(LoggerFactory)
                 .EnableSensitiveDataLogging()
-                .UseSqlite(Configuration.GetConnectionString("conn"))
-                /*.UseInMemoryDatabase("bcp")*/);
+                .UseSqlite(Configuration.GetConnectionString("conn")));
 
             services.AddMvcCore()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddFluentValidation()
                 .AddApiExplorer();
 
-            //services.AddControllers()
-            //    .AddNewtonsoftJson(options => {
-            //        options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            //    });
 
             services.AddControllers();
 

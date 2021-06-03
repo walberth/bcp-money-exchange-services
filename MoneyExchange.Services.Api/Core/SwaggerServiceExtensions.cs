@@ -22,7 +22,7 @@
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Version = "v1",
+                    Version = "3.0.0",
                     Title = "MoneyExchange API",
                     Description = "This is the swagger page for the MoneyExchange endpoints information",
                     Contact = new OpenApiContact
@@ -43,6 +43,7 @@
                     BearerFormat = "JWT",
                 });
 
+
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
@@ -58,9 +59,9 @@
                     }
                 });
 
-                //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                //c.IncludeXmlComments(xmlPath);
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
 
             return services;
@@ -75,7 +76,7 @@
             app.UseSwagger();
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "MoneyExchange API");
-
+                
                 c.RoutePrefix = string.Empty;
                 c.DocumentTitle = "Swagger Exphadis API";
                 c.DocExpansion(DocExpansion.None);

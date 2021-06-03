@@ -1,4 +1,6 @@
-﻿namespace MoneyExchange.Controllers
+﻿using System.Threading.Tasks;
+
+namespace MoneyExchange.Controllers
 {
     using Application.DTO;
     using Application.Interfaces;
@@ -27,18 +29,20 @@
         ///</Summary>
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult GetExchangeTypes()
+        public async Task<IActionResult> GetExchangeTypes()
         {
-            return Ok(_exchangeApplication.GetExchangeTypes());
+            var exchangeTypes = await _exchangeApplication.GetExchangeTypes();
+            return Ok(exchangeTypes);
         }
 
         ///<Summary>
         /// Realize the money exchange from one type to another
         ///</Summary>
         [HttpPost]
-        public ActionResult RealizeMoneyExchange([FromBody] ReceiveExchangeDto receiveExchange)
+        [Route("perform")]
+        public ActionResult PerformMoneyExchange([FromBody] ReceiveExchangeDto receiveExchange)
         {
-            return Ok(_exchangeApplication?.RealizeMoneyExchange(receiveExchange));
+            return Ok(_exchangeApplication?.PerformMoneyExchange(receiveExchange));
         }
 
         ///<Summary>
@@ -48,6 +52,25 @@
         public ActionResult ChangeMoneyExchangeType([FromBody] ExchangeTypeDto exchangeType)
         {
             return Ok(_exchangeApplication?.ChangeMoneyExchangeType(exchangeType));
+        }
+
+        ///<Summary>
+        /// Register a new type of change
+        ///</Summary>
+        [HttpPost]
+        public ActionResult RegisterMoneyExchangeType([FromBody] ExchangeTypeDto exchangeType)
+        {
+            return Ok(_exchangeApplication?.RegisterMoneyExchangeType(exchangeType));
+        }
+
+        ///<Summary>
+        /// Delete type of change
+        ///</Summary>
+        [HttpDelete]
+        [Route("{originCurrency:=originCurrency}/{destinationCurrency:=destinationCurrency}")]
+        public ActionResult DeleteMoneyExchangeType([FromRoute] string originCurrency, [FromRoute] string destinationCurrency)
+        {
+            return Ok(_exchangeApplication?.DeleteMoneyExchangeType(originCurrency, destinationCurrency));
         }
     }
 }

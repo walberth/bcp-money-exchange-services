@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Data.Common;
     using Configuration.Context;
+    using System.Threading.Tasks;
     using System.Collections.Generic;
     using Microsoft.EntityFrameworkCore;
 
@@ -18,9 +19,9 @@
             _context = context;
         }
 
-        public IEnumerable<ExchangeType> GetExchangeTypes()
+        public async Task<IEnumerable<ExchangeType>> GetExchangeTypes()
         {
-            return _context.ExchangeType.ToList();
+            return await _context.ExchangeType.ToListAsync();
         }
 
         public ExchangeType GetTypeChangedAmount(string originCurrency, string destinationCurrency)
@@ -37,6 +38,28 @@
             }
 
             _context.ExchangeType.Update(exchangeType);
+            _context.SaveChanges();
+        }
+
+        public void RegisterMoneyExchangeType(ExchangeType exchangeType, IDbTransaction transaction)
+        {
+            if (_context.Database.CurrentTransaction == null)
+            {
+                _context.Database.UseTransaction((DbTransaction)transaction);
+            }
+
+            _context.ExchangeType.Add(exchangeType);
+            _context.SaveChanges();
+        }
+
+        public void DeleteMoneyExchangeType(ExchangeType exchangeType, IDbTransaction transaction)
+        {
+            if (_context.Database.CurrentTransaction == null)
+            {
+                _context.Database.UseTransaction((DbTransaction)transaction);
+            }
+
+            _context.ExchangeType.Remove(exchangeType);
             _context.SaveChanges();
         }
     }

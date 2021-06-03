@@ -18,7 +18,7 @@
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=bcp.db", options =>
+            optionsBuilder.UseSqlite("Filename=Sqlite/bcp.db", options =>
             {
                 options.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
             });

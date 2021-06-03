@@ -1,4 +1,6 @@
-﻿namespace MoneyExchange.Application.Main
+﻿using MoneyExchange.Infrastructure.Entity;
+
+namespace MoneyExchange.Application.Main
 {
     using DTO;
     using System;
@@ -6,8 +8,8 @@
     using Interfaces;
     using System.Linq;
     using Transversal.Common;
-    using Infrastructure.Entity;
     using Transversal.Validator;
+    using System.Threading.Tasks;
     using System.Collections.Generic;
     using MoneyExchange.Infrastructure.Interfaces;
 
@@ -27,11 +29,11 @@
             _exchangeRepository = exchangeRepository;
         }
 
-        public Response<IEnumerable<ExchangeTypeDto>> GetExchangeTypes()
+        public async Task<Response<IEnumerable<ExchangeTypeDto>>> GetExchangeTypes()
         {
             var response = new Response<IEnumerable<ExchangeTypeDto>>();
 
-            var exchangeTypes = _exchangeRepository.GetExchangeTypes().ToList();
+            var exchangeTypes = await _exchangeRepository.GetExchangeTypes();
 
             if (!exchangeTypes.Any())
             {
@@ -46,7 +48,7 @@
             return response;
         }
 
-        public Response<ReturnExchangeDto> RealizeMoneyExchange(ReceiveExchangeDto receiveExchange)
+        public Response<ReturnExchangeDto> PerformMoneyExchange(ReceiveExchangeDto receiveExchange)
         {
             var response = new Response<ReturnExchangeDto>();
 
@@ -116,6 +118,72 @@
             }
 
             response.IsWarning = false; 
+
+            return response;
+        }
+
+        public Response<object> RegisterMoneyExchangeType(ExchangeTypeDto exchangeType)
+        {
+            var response = new Response<object>();
+
+            var validator = new ExchangeTypeValidator().Validate(exchangeType);
+
+            if (!validator.IsValid)
+            {
+                response.Message = validator.Errors.GetErrorMessage();
+
+                return response;
+            }
+
+            using (var transaction = _unitOfWork?.BeginTransaction())
+            {
+                try
+                {
+                    _exchangeRepository.RegisterMoneyExchangeType(_mapper.Map<ExchangeType>(exchangeType), transaction);
+
+                    transaction?.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction?.Rollback();
+                    throw;
+                }
+            }
+
+            response.IsWarning = false;
+
+            return response;
+        }
+
+        public Response<object> DeleteMoneyExchangeType(string originCurrency, string destinationCurrency)
+        {
+            var response = new Response<object>();
+
+            var exchangeType = _exchangeRepository.GetTypeChangedAmount(originCurrency, destinationCurrency);
+
+            if (exchangeType == null)
+            {
+                response.Message = Message.DidNotFindTypeExchange;
+
+                return response;
+            }
+
+            using (var transaction = _unitOfWork?.BeginTransaction())
+            {
+                try
+                {
+                    _exchangeRepository.DeleteMoneyExchangeType(exchangeType, transaction);
+
+                    transaction?.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction?.Rollback();
+                    throw;
+                }
+            }
+
+            response.IsWarning = false;
 
             return response;
         }
