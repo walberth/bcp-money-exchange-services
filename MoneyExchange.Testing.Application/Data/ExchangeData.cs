@@ -1,4 +1,6 @@
-﻿namespace MoneyExchange.Testing.Application.Data
+﻿using MoneyExchange.Application.DTO;
+
+namespace MoneyExchange.Testing.Application.Data
 {
     using Infrastructure.Entity;
     using System.Threading.Tasks;
@@ -21,6 +23,37 @@
         public static async Task<IEnumerable<ExchangeType>> GetExchangeTypesNotFoundAny()
         {
             return await Task.Run(() => new List<ExchangeType>());
+        }
+
+        public static ReceiveExchangeDto GetReceiveExchangeIncomplete()
+        {
+            return new ReceiveExchangeDto()
+            {
+                Monto = 0,
+                MonedaOrigen = "PEN",
+                MonedaDestino = null
+            };
+        }
+
+        public static ReceiveExchangeDto GetReceiveExchangeComplete()
+        {
+            return new ReceiveExchangeDto()
+            {
+                Monto = 100,
+                MonedaOrigen = "PEN",
+                MonedaDestino = "USD"
+            };
+        }
+
+        public static ExchangeType GetExchangeType()
+        {
+            return new ExchangeType()
+            {
+                Id = 1,
+                TipoCambio = 0.26,
+                MonedaOrigen = "PEN",
+                MonedaDestino = "USD"
+            };
         }
     }
 }
