@@ -40,5 +40,14 @@
         {
             return Ok(_exchangeApplication?.RealizeMoneyExchange(receiveExchange));
         }
+
+        ///<Summary>
+        /// Realize the change of the value of the type exchange
+        ///</Summary>
+        [HttpPut]
+        public ActionResult ChangeMoneyExchangeType([FromBody] ExchangeTypeDto exchangeType)
+        {
+            return Ok(_exchangeApplication?.ChangeMoneyExchangeType(exchangeType));
+        }
     }
 }

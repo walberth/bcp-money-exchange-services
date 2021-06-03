@@ -13,7 +13,7 @@
     [Route("api/auth")]
     public class AuthenticationController : BaseController
     {
-        private IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
 
         ///<Summary>
         /// Constructor for Authentication

@@ -8,5 +8,6 @@
     {
         Response<IEnumerable<ExchangeTypeDto>> GetExchangeTypes(); 
         Response<ReturnExchangeDto> RealizeMoneyExchange(ReceiveExchangeDto receiveExchange);
+        Response<object> ChangeMoneyExchangeType(ExchangeTypeDto exchangeType);
     }
 }

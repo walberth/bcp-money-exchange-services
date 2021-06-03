@@ -59,8 +59,7 @@
                 return response;
             }
 
-            var exchangeType = _exchangeRepository.GetTypeChangedAmount(receiveExchange.MonedaOrigen, 
-                receiveExchange.MonedaDestino);
+            var exchangeType = _exchangeRepository.GetTypeChangedAmount(receiveExchange.MonedaOrigen, receiveExchange.MonedaDestino);
 
             if (exchangeType == null)
             {
@@ -74,6 +73,49 @@
 
             response.Data = returnExchange;
             response.IsWarning = false;
+
+            return response;
+        }
+
+        public Response<object> ChangeMoneyExchangeType(ExchangeTypeDto exchangeType)
+        {
+            var response = new Response<object>();
+
+            var validator = new ExchangeTypeValidator().Validate(exchangeType);
+
+            if (!validator.IsValid)
+            {
+                response.Message = validator.Errors.GetErrorMessage();
+
+                return response;
+            }
+
+            var exchangeTypeEntity = _exchangeRepository.GetTypeChangedAmount(exchangeType.MonedaOrigen, exchangeType.MonedaDestino);
+
+            if (exchangeTypeEntity == null)
+            {
+                response.Message = Message.DidNotFindTypeExchange;
+
+                return response;
+            }
+
+            using (var transaction = _unitOfWork?.BeginTransaction())
+            {
+                try
+                {
+                    exchangeTypeEntity.TipoCambio = exchangeType.TipoCambio;
+                    _exchangeRepository.UpdateExchangeType(exchangeTypeEntity, transaction);
+
+                    transaction?.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction?.Rollback();
+                    throw;
+                }
+            }
+
+            response.IsWarning = false; 
 
             return response;
         }
