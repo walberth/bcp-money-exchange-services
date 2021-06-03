@@ -6,5 +6,6 @@
     public interface IExchangeRepository
     {
         IEnumerable<ExchangeType> GetExchangeTypes();
+        ExchangeType GetTypeChangedAmount(string originCurrency, string destinationCurrency);
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace MoneyExchange.Controllers
 {
+    using Application.DTO;
     using Application.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
@@ -14,7 +15,7 @@
         private readonly IExchangeApplication _exchangeApplication;
 
         ///<Summary>
-        /// Constructor for Course
+        /// Constructor for Exchange
         ///</Summary>
         public ExchangeController(IExchangeApplication exchangeApplication)
         {
@@ -22,13 +23,22 @@
         }
 
         ///<Summary>
-        /// Get the psychology appointment inscriptions
+        /// Get the exchange types registered in the sqlite database
         ///</Summary>
         [HttpGet]
         [AllowAnonymous]
         public ActionResult GetExchangeTypes()
         {
             return Ok(_exchangeApplication.GetExchangeTypes());
+        }
+
+        ///<Summary>
+        /// Realize the money exchange from one type to another
+        ///</Summary>
+        [HttpPost]
+        public ActionResult RealizeMoneyExchange([FromBody] ReceiveExchangeDto receiveExchange)
+        {
+            return Ok(_exchangeApplication?.RealizeMoneyExchange(receiveExchange));
         }
     }
 }

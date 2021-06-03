@@ -60,7 +60,7 @@
             {
                 IsSuccess = false,
                 IsWarning = true,
-                Message = string.Format(Message.ErrorInesperado, new Guid().ToString())
+                Message = string.Format(Message.UnexpectedError, Guid.NewGuid().ToString())
             };
 
             return context.Response.WriteAsync(response.Serialize());

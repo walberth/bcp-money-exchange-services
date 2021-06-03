@@ -19,5 +19,11 @@
         {
             return _context.ExchangeType.ToList();
         }
+
+        public ExchangeType GetTypeChangedAmount(string originCurrency, string destinationCurrency)
+        {
+            return _context.ExchangeType.SingleOrDefault(x => x.MonedaOrigen == originCurrency 
+                                                     && x.MonedaDestino == destinationCurrency);
+        }
     }
 }

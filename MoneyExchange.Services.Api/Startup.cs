@@ -6,6 +6,7 @@ namespace MoneyExchange
     using Service.Api.Providers;
     using Service.Api.Middleware;
     using Microsoft.AspNetCore.Mvc;
+    using FluentValidation.AspNetCore;
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
     using Microsoft.AspNetCore.Builder;
@@ -71,7 +72,13 @@ namespace MoneyExchange
 
             services.AddMvcCore()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddFluentValidation()
                 .AddApiExplorer();
+
+            //services.AddControllers()
+            //    .AddNewtonsoftJson(options => {
+            //        options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //    });
 
             services.AddControllers();
 
@@ -93,6 +100,8 @@ namespace MoneyExchange
             }
 
             app.UseCors("AllowCors");
+
+            app.UseAuthentication();
 
             app.UseMiddleware<ExceptionMiddleware>();
 

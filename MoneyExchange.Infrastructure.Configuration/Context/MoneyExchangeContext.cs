@@ -1,8 +1,7 @@
-﻿using System.Reflection;
-
-namespace MoneyExchange.Infrastructure.Configuration.Context
+﻿namespace MoneyExchange.Infrastructure.Configuration.Context
 {
     using Entity;
+    using System.Reflection;
     using Microsoft.EntityFrameworkCore;
 
     public sealed class MoneyExchangeContext : DbContext
@@ -29,9 +28,12 @@ namespace MoneyExchange.Infrastructure.Configuration.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ExchangeType>().HasData(
-                new ExchangeType { Id = 1, MonedaOrigen = "PEN", MonedaDestino = "USD", TipoCambio = 3.7 },
-                new ExchangeType { Id = 2, MonedaOrigen = "USD", MonedaDestino = "PEN", TipoCambio = 1.25 },
-                new ExchangeType { Id = 3, MonedaOrigen = "EUR", MonedaDestino = "PEN", TipoCambio = 3.2 }
+                new ExchangeType { Id = 1, MonedaOrigen = "PEN", MonedaDestino = "USD", TipoCambio = 0.26 },
+                new ExchangeType { Id = 2, MonedaOrigen = "PEN", MonedaDestino = "EUR", TipoCambio = 0.21 },
+                new ExchangeType { Id = 3, MonedaOrigen = "USD", MonedaDestino = "PEN", TipoCambio = 3.85 },
+                new ExchangeType { Id = 4, MonedaOrigen = "USD", MonedaDestino = "EUR", TipoCambio = 0.82 },
+                new ExchangeType { Id = 5, MonedaOrigen = "EUR", MonedaDestino = "PEN", TipoCambio = 4.70 },
+                new ExchangeType { Id = 6, MonedaOrigen = "EUR", MonedaDestino = "USD", TipoCambio = 1.22 }
             );
             base.OnModelCreating(modelBuilder);
         }

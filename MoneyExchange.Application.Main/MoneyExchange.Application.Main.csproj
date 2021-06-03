@@ -14,6 +14,7 @@
     <ProjectReference Include="..\MoneyExchange.Infrastructure.Entity\MoneyExchange.Infrastructure.Entity.csproj" />
     <ProjectReference Include="..\MoneyExchange.Infrastructure.Interfaces\MoneyExchange.Infrastructure.Interfaces.csproj" />
     <ProjectReference Include="..\MoneyExchange.Transversal.Common\MoneyExchange.Transversal.Common.csproj" />
+    <ProjectReference Include="..\MoneyExchange.Transversal.Validator\MoneyExchange.Transversal.Validator.csproj" />
   </ItemGroup>
 
 </Project>

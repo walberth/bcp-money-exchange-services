@@ -2,7 +2,7 @@
 {
     public class ReceiveExchangeDto
     {
-        public decimal Monto { get; set; }
+        public double Monto { get; set; }
         public string MonedaOrigen { get; set; }
         public string MonedaDestino { get; set; }
     }
