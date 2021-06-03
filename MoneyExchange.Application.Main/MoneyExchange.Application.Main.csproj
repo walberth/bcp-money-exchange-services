@@ -5,8 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MoneyExchange.Application.DTO\MoneyExchange.Application.DTO.csproj" />
+    <ProjectReference Include="..\MoneyExchange.Application.Interfaces\MoneyExchange.Application.Interfaces.csproj" />
     <ProjectReference Include="..\MoneyExchange.Infrastructure.Entity\MoneyExchange.Infrastructure.Entity.csproj" />
     <ProjectReference Include="..\MoneyExchange.Infrastructure.Interfaces\MoneyExchange.Infrastructure.Interfaces.csproj" />
+    <ProjectReference Include="..\MoneyExchange.Transversal.Common\MoneyExchange.Transversal.Common.csproj" />
   </ItemGroup>
 
 </Project>

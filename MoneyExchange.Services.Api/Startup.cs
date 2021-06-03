@@ -1,34 +1,90 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace MoneyExchange
 {
+    using System;
+    using System.Text;
+    using Service.Api.Core;
+    using Service.Api.Providers;
+    using Service.Api.Middleware;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Hosting;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.IdentityModel.Tokens;
+    using Microsoft.Extensions.Logging.Debug;
+    using Microsoft.Extensions.Configuration;
+    using Infrastructure.Configuration.Context;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+
+    /// <summary>
+    /// Startup the application
+    /// </summary>
     public class Startup
     {
+        private static readonly ILoggerFactory LoggerFactory = new LoggerFactory(new[] { new DebugLoggerProvider() });
+
+        ///<Summary>
+        /// Configuration static class of Startup
+        ///</Summary>
+        public IConfiguration Configuration { get; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// Configure services
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(Configuration);
+
+            services.AddCors(options => options.AddPolicy("AllowCors",
+                builder =>
+                {
+                    builder
+                        .AllowAnyHeader()
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .SetIsOriginAllowed(origin => true);
+                }));
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(config => {
+                    config.TokenValidationParameters = TokenValidators();
+                });
+
+            services.AddEntityFrameworkSqlite()
+                .AddDbContext<MoneyExchangeContext>(x => x.UseLoggerFactory(LoggerFactory)
+                .EnableSensitiveDataLogging()
+                .UseSqlite(Configuration.GetConnectionString("conn"))
+                /*.UseInMemoryDatabase("bcp")*/);
+
+            services.AddMvcCore()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddApiExplorer();
+
             services.AddControllers();
+
+            services.AddOptions();
+            services.AddSwaggerDocumentation();
+            services.ConfigureServiceCollection();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// Configure the startup app
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -36,7 +92,9 @@ namespace MoneyExchange
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors("AllowCors");
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseRouting();
 
@@ -46,6 +104,27 @@ namespace MoneyExchange
             {
                 endpoints.MapControllers();
             });
+
+            app.UseHttpsRedirection();
+
+            app.UseSwaggerDocumentation();
+        }
+
+        /// <summary>
+        /// Validate the token params
+        /// </summary>
+        /// <returns></returns>
+        protected TokenValidationParameters TokenValidators()
+        {
+            return new TokenValidationParameters()
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidIssuer = Configuration["JWT:Issuer"],
+                ValidAudience = Configuration["JWT:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_KEY") ?? throw new InvalidOperationException()))
+            };
         }
     }
 }

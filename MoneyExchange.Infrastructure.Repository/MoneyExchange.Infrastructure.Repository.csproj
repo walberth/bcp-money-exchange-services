@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MoneyExchange.Infrastructure.Configuration\MoneyExchange.Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\MoneyExchange.Infrastructure.Entity\MoneyExchange.Infrastructure.Entity.csproj" />
+    <ProjectReference Include="..\MoneyExchange.Infrastructure.Interfaces\MoneyExchange.Infrastructure.Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>

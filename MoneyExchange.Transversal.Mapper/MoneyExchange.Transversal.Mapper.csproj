@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MoneyExchange.Application.DTO\MoneyExchange.Application.DTO.csproj" />
     <ProjectReference Include="..\MoneyExchange.Infrastructure.Entity\MoneyExchange.Infrastructure.Entity.csproj" />
   </ItemGroup>
 

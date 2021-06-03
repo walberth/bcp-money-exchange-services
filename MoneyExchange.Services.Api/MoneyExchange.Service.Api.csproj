@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.6" />
+    <PackageReference Include="Microsoft.IdentityModel" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.4" />
@@ -17,7 +21,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MoneyExchange.Application.DTO\MoneyExchange.Application.DTO.csproj" />
+    <ProjectReference Include="..\MoneyExchange.Application.Interfaces\MoneyExchange.Application.Interfaces.csproj" />
     <ProjectReference Include="..\MoneyExchange.Application.Main\MoneyExchange.Application.Main.csproj" />
+    <ProjectReference Include="..\MoneyExchange.Infrastructure.Configuration\MoneyExchange.Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\MoneyExchange.Infrastructure.Repository\MoneyExchange.Infrastructure.Repository.csproj" />
+    <ProjectReference Include="..\MoneyExchange.Transversal.Common\MoneyExchange.Transversal.Common.csproj" />
+    <ProjectReference Include="..\MoneyExchange.Transversal.Mapper\MoneyExchange.Transversal.Mapper.csproj" />
   </ItemGroup>
 
 

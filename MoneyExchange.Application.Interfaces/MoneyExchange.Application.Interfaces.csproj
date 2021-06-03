@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MoneyExchange.Application.DTO\MoneyExchange.Application.DTO.csproj" />
+    <ProjectReference Include="..\MoneyExchange.Transversal.Common\MoneyExchange.Transversal.Common.csproj" />
+  </ItemGroup>
+
 </Project>
